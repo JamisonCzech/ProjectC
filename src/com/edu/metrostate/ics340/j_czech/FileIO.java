@@ -2,14 +2,9 @@ package com.edu.metrostate.ics340.j_czech;/* ICS 340 Program A */
 /* Robin Ehrlich */
 /* 2017-05-24 */
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.File;
-
-import javax.swing.JFileChooser;
+import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import java.io.*;
 
 public class FileIO {
 
