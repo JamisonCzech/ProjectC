@@ -1,7 +1,3 @@
-package com.edu.metrostate.ics340.j_czech;
-
-import static com.edu.metrostate.ics340.j_czech.FileIO.processFile;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -19,7 +15,7 @@ public class Main {
                 oFile = iFile.substring(0, i) + "_out" + iFile.substring(i);
             else
                 oFile = iFile + "_out";
-            processFile(iFile, oFile);
+            FileIO.processFile(iFile, oFile);
         }
 
     }

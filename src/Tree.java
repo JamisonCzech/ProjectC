@@ -1,7 +1,6 @@
 /**
  * 
  */
-package com.edu.metrostate.ics340.j_czech;
 
 /**
  * @author Jamison Czech citation http://www.cs.colorado.edu/~main/docs/

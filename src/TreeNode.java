@@ -1,5 +1,3 @@
-package com.edu.metrostate.ics340.j_czech;
-
 public interface TreeNode<T> {
 
 	TreeNode<T>[] getChildren();

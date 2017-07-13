@@ -1,4 +1,3 @@
-package com.edu.metrostate.ics340.j_czech;/* ICS 340 Program A */
 /* Robin Ehrlich */
 /* 2017-05-24 */
 
