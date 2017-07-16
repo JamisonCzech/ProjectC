@@ -30,14 +30,13 @@ public class DictionaryTreeNode<T extends Comparable<T>> implements TreeNode<T> 
 	
 	/**
 	 * inserts string into BST <b>Postcondition:</b>
-	 * 
+	 *
 	 * @param insertWord
 	 *            inserts the word into BST
 	 */
 	public void insert(T insertWord) {
-		// int one = ((String) insertWord).compareToIgnoreCase((String) data);
-		// System.out.println("wordOne "+ insertWord + " wordTwo " + data +"
-		// comparison: "+ one);
+		int one = ((String) insertWord).compareToIgnoreCase((String) data);
+		 System.out.println("wordOne "+ insertWord + " wordTwo " + data + "comparison: "+ one);
 		if (insertWord.compareTo(getData()) < 0) {
 			if (getLeftChild() == null) {
 				setLeftChild(new DictionaryTreeNode<T>(insertWord));
