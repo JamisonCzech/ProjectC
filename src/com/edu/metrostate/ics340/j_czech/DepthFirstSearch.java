@@ -113,22 +113,22 @@ public class DepthFirstSearch {
                 if (!edge.getDestination().isVisited()) {
 
                     if (edge.getWeight() < weightValue) {
-
-
-                        weightValue = edge.getWeight();
-                        compare = edge.getDestination();
-
-                        if (compare != null) {
-                            if (edge.getDestination().equals(compare)) {
-                                edge.setEdgeClassification("T");
-                            }
-                        }
-
-
+//
+//
+//                        weightValue = edge.getWeight();
+//                        compare = edge.getDestination();
+//
+////                        if (compare != null) {
+////                            if (edge.getDestination().equals(compare)) {
+////                                edge.setEdgeClassification("T");
+////                            }
+////                        }
+//
+//
                     }
 
                 }// end if
-                //  System.out.println("Here it is right order: " + edge.getOrigin());
+                System.out.println("Here it is right order: " + edge.getOrigin());
 
             }// End For _________
 

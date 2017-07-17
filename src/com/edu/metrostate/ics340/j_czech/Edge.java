@@ -9,14 +9,15 @@ public class Edge {
     List<Edge> allEdges = new ArrayList();
     private Node origin;
     private Node destination;
-    private String edgeType;
+    private String classification;
+
     private int weight;
 
 
     public Edge(Node origin, Node finish) {
         this.origin = origin;
         this.destination = finish;
-        this.edgeType = "";
+        this.classification = "";
 
     }
 
@@ -63,14 +64,14 @@ public class Edge {
      * @return
      */
     public String getEdgeClassification() {
-        return edgeType;
+        return classification;
     }
 
     /**
      * @param edgeType
      */
     public void setEdgeClassification(String edgeType) {
-        this.edgeType = edgeType;
+        this.classification = edgeType;
     }
 
     public List<Edge> getAllEdges() {

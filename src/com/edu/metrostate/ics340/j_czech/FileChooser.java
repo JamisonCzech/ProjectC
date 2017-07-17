@@ -79,7 +79,7 @@ public class FileChooser<T> {
 
         tempNumbersList = new ArrayList<Integer>();
         numbersList = new ArrayList<Object[]>();
-        vertices = new ArrayList<String>();
+        vertices = new ArrayList<>();
 
         try {
             //Read in file io
@@ -125,7 +125,7 @@ public class FileChooser<T> {
                     ++counter;
 
                 }// end while
-                System.out.println(Arrays.toString(results));
+                System.out.println("\n" + Arrays.toString(results));
                 System.out.println(vertices);
             }   //end for
             intMatrix = new int[matrixHelper.size()][];
@@ -136,8 +136,10 @@ public class FileChooser<T> {
                 intMatrix[i] = row;
             }
             //Print Lines from io File
-            System.out.println("Number of lines in array = " + counter);
-            System.out.println("Here it is array:   " + Arrays.deepToString(intMatrix));
+            System.out.println("Number of vertices = " + counter);
+            System.out.println("\n\nHere it is array:   " + Arrays.deepToString(intMatrix));
+
+            System.out.println(nodeList.toString());
 
         } catch (Exception e) {
             System.err.println("Reading failed at line " + lineNumber);
