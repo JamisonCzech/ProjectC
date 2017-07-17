@@ -51,11 +51,11 @@ public class DepthFirstSearch {
                     // Create a new edge object with start name, end name, and weight of edge
                     edge = new Edge(origin, destination);
                     edge.setWeight(intMatrix[i][v]);
-                    allEdges.add(edge);
+                    allEdges.add(edge); //allEdges both origin and destanation nodes
                 }
             }
         }
-
+        System.out.println("All aedges array" + allEdges.toString());
     } // end CreateGraph
 
     public void dfsRecursive(Node node) {

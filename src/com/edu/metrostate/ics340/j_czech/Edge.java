@@ -68,10 +68,10 @@ public class Edge {
     }
 
     /**
-     * @param edgeType
+     * @param classification
      */
-    public void setEdgeClassification(String edgeType) {
-        this.classification = edgeType;
+    public void setEdgeClassification(String classification) {
+        this.classification = classification;
     }
 
     public List<Edge> getAllEdges() {
@@ -83,13 +83,13 @@ public class Edge {
 
     }
 
-//    @Override
-//    public String toString() {
-//        return "Edge{" +
-//                "origin=" + origin +
-//                ", destination=" + destination +
-//                ", edgeType='" + edgeType + '\'' +
-//                ", weight=" + weight +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return "Edge{" +
+                "origin=" + origin +
+                ", destination=" + destination +
+                ", classification='" + classification + '\'' +
+                ", weight=" + weight +
+                '}';
+    }
 }
