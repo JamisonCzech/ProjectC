@@ -1,9 +1,13 @@
-import com.edu.metrostate.ics340.j_czech.FileChooser;
+/**
+ * @author Jamison Czech <A HREF="mailto:main@jamisonczech@gmail.com">
+ *         (jamisonczech@gmail.com) </A>
+ */
+
 
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+
         FileChooser fileChooser = new FileChooser();
 
         int i;
@@ -19,6 +23,11 @@ public class Main {
                 oFile = iFile + "_out";
             fileChooser.processFile(iFile, oFile);
         }
+        DepthFirstSearch depthFirstSearch = new DepthFirstSearch();
+        depthFirstSearch.createGraph();
+        depthFirstSearch.DepthFirstSearch();
+        depthFirstSearch.printVertices();
+
 
     }
 }
