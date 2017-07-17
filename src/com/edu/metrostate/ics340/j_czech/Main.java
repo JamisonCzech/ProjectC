@@ -27,7 +27,7 @@ public class Main {
         }
         DepthFirstSearch depthFirstSearch = new DepthFirstSearch();
         depthFirstSearch.createGraph();
-        depthFirstSearch.DepthFirstSearch();
+        depthFirstSearch.dfsSearch();
         depthFirstSearch.printVertices();
 
 

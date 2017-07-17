@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Node {
 
-    protected static List<Edge> nodeEdge = new ArrayList<Edge>();
+    protected List<Edge> nodeEdge = new ArrayList<>();
     private String name;
     private List<Node> neighborList;
     private boolean visited;
@@ -43,6 +43,13 @@ public class Node {
         return name;
     }
 
+    /**
+     * @param name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public int getFinishingRank() {
         return finishingRank;
     }
@@ -51,12 +58,12 @@ public class Node {
         this.finishingRank = finishingRank;
     }
 
-    public boolean isVisited() {
+    public boolean isMarked() {
         return visited;
     }
 
-    public void setVisited(boolean visited) {
-        this.visited = visited;
+    public void setMarked(boolean marked) {
+        this.visited = marked;
     }
 
 
@@ -67,6 +74,36 @@ public class Node {
     @Override
     public String toString() {
         return this.name + "   " + getStartingRank() + "   " + getFinishingRank();
-        //eturn " The vertex here!!!!! " + this.name + " " + nodeEdge.toString();
+    }
+
+
+    public Node dfsUtilNewNew() {
+        Node compare = null;// node compare
+        int weightValue = Integer.MAX_VALUE;// int weightValue
+
+
+        for (Edge edge : nodeEdge) {
+
+            if (!edge.getDestination().isMarked()) {
+
+                if ((edge.getWeight() < weightValue)) {
+
+                    compare = edge.getDestination();
+                    weightValue = edge.getWeight();
+                }
+            }
+        }
+
+
+        if (compare != null) {
+
+            for (Edge edge : nodeEdge) {
+                if (edge.getDestination().equals(compare)) {
+                    edge.setEdgeClassification("T");
+                }
+            }
+        }
+
+        return compare;
     }
 }

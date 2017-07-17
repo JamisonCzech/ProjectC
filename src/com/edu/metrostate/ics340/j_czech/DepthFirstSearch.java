@@ -15,6 +15,7 @@ public class DepthFirstSearch {
     protected static int timeStamp = 1;
     protected List<Node> nodeArray = new ArrayList<>();
     Node CompareNext;
+    List<Node> nodeEdges = new ArrayList<>();
     private Stack<Node> nodeStack;
     private List<Edge> allEdges = new ArrayList<>();
     private Edge edge;
@@ -52,10 +53,12 @@ public class DepthFirstSearch {
                     edge = new Edge(origin, destination);
                     edge.setWeight(intMatrix[i][v]);
                     allEdges.add(edge); //allEdges both origin and destanation nodes
+                    origin.nodeEdge.add(edge);
+
                 }
             }
         }
-        System.out.println("All aedges array" + allEdges.toString());
+
     } // end CreateGraph
 
     public void dfsRecursive(Node node) {
@@ -63,8 +66,9 @@ public class DepthFirstSearch {
         System.out.print(node + "->");
 
         for (Node v : node.getNeighborList()) {
-            if (!v.isVisited()) {
-                v.setVisited(true);
+
+            if (!v.isMarked()) {
+                v.setMarked(true);
                 dfsRecursive(v);
             }
         }
@@ -73,7 +77,7 @@ public class DepthFirstSearch {
     public void dfsNormal(Node root) {
 
         nodeStack.add(root);
-        root.setVisited(true);
+        root.setMarked(true);
 
         while (!nodeStack.isEmpty()) {
 
@@ -81,15 +85,15 @@ public class DepthFirstSearch {
             System.out.println(actualNode + "->");
 
             for (Node v : actualNode.getNeighborList()) {
-                if (!v.isVisited()) {
-                    v.setVisited(true);
+                if (!v.isMarked()) {
+                    v.setMarked(true);
                     nodeStack.push(v);
                 }
             }
         }
     }
 
-    public void DepthFirstSearch() {
+    public void dfsSearch() {
 
         Node newNode;
 
@@ -99,54 +103,59 @@ public class DepthFirstSearch {
             newNode = stack.pop();
 
 
-            if (!newNode.isVisited()) {
+            if (!newNode.isMarked()) {
                 newNode.setStartingRank(timeStamp);
 
-                newNode.setVisited(true);
+                newNode.setMarked(true);
                 timeStamp++;
+                System.out.print(newNode.getName());
             }
-            System.out.println(newNode.getName());
 
-            for (Edge edge : allEdges) {
+//____________________________________________________________________________________________________________________
 
 
-                if (!edge.getDestination().isVisited()) {
-
-                    if (edge.getWeight() < weightValue) {
+//            for (Edge edge : allEdges) {
 //
+//                if (!edge.getDestination().isMarked()) {
 //
-//                        weightValue = edge.getWeight();
+//                    if ((edge.getWeight() < weightValue)) {
+//
 //                        compare = edge.getDestination();
-//
-////                        if (compare != null) {
-////                            if (edge.getDestination().equals(compare)) {
-////                                edge.setEdgeClassification("T");
-////                            }
-////                        }
+//                        weightValue = edge.getWeight();
+//                    }
+//                }
+//            }
 //
 //
-                    }
+//            if (compare != null) {
+//
+//                for (Edge edge : allEdges) {
+//                    if (edge.getDestination().equals(compare)) {
+//                        edge.setEdgeClassification("T");
+//                    }
+//                }
+//            }
 
-                }// end if
-                System.out.println("Here it is right order: " + edge.getOrigin());
+            // compare = DFSUtil();
+            compare = newNode.dfsUtilNewNew();
 
-            }// End For _________
 
             if (compare != null) {
 
-                stack.push(beginningNode);
+                stack.push(newNode);
                 stack.push(compare);
 
             } else {
 
                 newNode.setFinishingRank(timeStamp);
-
                 timeStamp++;
             }
-        }
 
-    }// End while
 
+        }// End while
+
+
+    }
 
     public void runDfs() {
         Node output = null;
@@ -159,28 +168,59 @@ public class DepthFirstSearch {
         }
     }
 
-    public Node DFSUtil() {
+    public Node dfsUtilNew() {
 
 
-        if (!(edge.getDestination().isVisited())) {
-
-            if ((edge.getWeight() < weightValue)) {
-
-                compare = edge.getDestination();
-                weightValue = edge.getWeight();
-            }
-        }
+//
+//        for (Edge edge : allEdges) {
+//
+//            if (!(edge.getDestination().isMarked())) {
+//
+//                if ((edge.getWeight() < weightValue)) {
+//
+//                    compare = edge.getDestination();
+//                    weightValue = edge.getWeight();
+//                }
+//            }
+//        }
 
 
         if (compare != null) {
 
+            for (Edge edge : allEdges) {
+                if (edge.getDestination().equals(compare)) {
+                    edge.setEdgeClassification("T");
+                }
+            }
+        }
 
-            if (edge.getDestination().equals(compare)) {
+        return compare;
+    }
+
+
+    public Node DFSUtil() {
+        Node compares = null;// node compare
+        int weightValues = Integer.MAX_VALUE;// int weightValue
+
+        if (!(edge.getDestination().isMarked())) {
+
+            if ((edge.getWeight() < weightValues)) {
+
+                compares = edge.getDestination();
+                weightValues = edge.getWeight();
+            }
+        }
+
+
+        if (compares != null) {
+
+
+            if (edge.getDestination().equals(compares)) {
                 edge.setEdgeClassification("T");
             }
 
         }
-        return compare;
+        return compares;
     }
 
 
@@ -192,8 +232,8 @@ public class DepthFirstSearch {
         node.setStartingRank(time);
 
         for (Node v : node.getNeighborList()) {
-            if (!v.isVisited()) {
-                v.setVisited(true);
+            if (!v.isMarked()) {
+                v.setMarked(true);
                 v.setPredecessor(node);
                 dfs(v);
             }
@@ -204,7 +244,7 @@ public class DepthFirstSearch {
     }
 
     public void printVertices() {
-        for (Node node : nodeArray) {
+        for (Node node : nodeList) {
             System.out.println(node + "");
         }
     }
