@@ -5,7 +5,6 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Created by Jamison on 6/30/2017.
@@ -16,15 +15,10 @@ public class FileChooser<T> {
     protected static int counter;
     protected static int[][] intMatrix;
     static ArrayList<Node> nodeList = new ArrayList<Node>();
-    static int[] visitedNodes;
+
     static String all;
     private static int[] results;
     private static String[] slice;
-    private static int numSolutions;
-    private static int finalResults[];
-    private static String paths[];
-    private static int counters = 0;
-    //--------------------------------------
     BufferedWriter bufferOut;
     FileWriter writerOut;
     String oFile;
@@ -100,18 +94,15 @@ public class FileChooser<T> {
                 if (inText == null) {
                     break;
                 }
-                System.out.println("Input Graph: \n\n" + inText);
                 while ((inText = inBuffer.readLine()) != null) {
                     vertex = inText.substring(0, 1);
                     all = vertex;
                     vertices.add(vertex);
                     nodeList.add(new Node(vertex));
                     inText = inText.substring(1);
-                    StringBuilder numberOnly = new StringBuilder(inText.replaceAll("[.]+", "0"));
 
 
-                    System.out.println(numberOnly);
-                    slice = numberOnly.toString().trim().split("\\s+");
+                    slice = inText.replaceAll("[.]+", "0").trim().split("\\s+");
                     results = new int[slice.length];
                     for (int i = 0; i < slice.length; i++) {
                         results[i] = Integer.parseInt(slice[i]);
@@ -125,8 +116,6 @@ public class FileChooser<T> {
                     ++counter;
 
                 }// end while
-                System.out.println("\n" + Arrays.toString(results));
-                System.out.println(vertices);
             }   //end for
             intMatrix = new int[matrixHelper.size()][];
             // convert 2d arrayList to 2d Matrix
@@ -135,15 +124,6 @@ public class FileChooser<T> {
                 int[] row = matrixHelper.get(i);
                 intMatrix[i] = row;
             }
-            //Print Lines from io File
-            writerOut.write("Number of vertices = " + counter);
-            bufferOut.newLine();
-            bufferOut.newLine();
-            System.out.println("Number of vertices = " + counter);
-            System.out.println("\n\nHere it is array:   " + Arrays.deepToString(intMatrix));
-
-            System.out.println(nodeList.toString());
-
         } catch (Exception e) {
             System.err.println("Reading failed at line " + lineNumber);
             e.printStackTrace(System.err);

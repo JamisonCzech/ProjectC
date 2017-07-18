@@ -1,10 +1,18 @@
 package com.edu.metrostate.ics340.j_czech;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
+/***************************************************************************************
+ *    Title: title of program/source code Book by:
+ *    Author: author(s) Ilias Tsagklis
+ *    Date Accessed: July 12th 2017
+ *    Availability: https://examples.javacodegeeks.com/core-java/util/comparator/sort-arraylist-using-comparator-example/
+ ***************************************************************************************/
 
-public class Node {
+
+public class Node implements Comparator<Node> {
 
     protected List<Edge> nodeEdge = new ArrayList<>();
     private String name;
@@ -72,17 +80,9 @@ public class Node {
         return neighborList;
     }
 
-    @Override
-    public String toString() {
-        return this.name + "   " + getStartingRank() + "   " + getFinishingRank();
-    }
-
-
     public Node dfsUtil() {
-        Node compare = null;// node compare
-        int weightValue = Integer.MAX_VALUE;// int weightValue
-
-
+        int weightValue = 9999999;
+        Node compare = null;
         for (Edge edge : nodeEdge) {
 
             if (!edge.getDestination().isMarked()) {
@@ -94,8 +94,6 @@ public class Node {
                 }
             }
         }
-
-
         if (compare != null) {
 
             for (Edge edge : nodeEdge) {
@@ -123,4 +121,13 @@ public class Node {
 
     }
 
+    @Override
+    public String toString() {
+        return this.name + "   " + getStartingRank() + "   " + getFinishingRank();
+    }
+
+    @Override
+    public int compare(Node o1, Node o2) {
+        return 0;
+    }
 }

@@ -241,9 +241,7 @@ public class DepthFirstSearch implements Comparator, Comparable {
 
     public void printEdgeClassification() {
 
-        for (Node edge : nodeList) {
 
-        }
 
     }
 
