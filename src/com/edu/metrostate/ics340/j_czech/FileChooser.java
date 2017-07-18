@@ -24,17 +24,16 @@ public class FileChooser<T> {
     private static int finalResults[];
     private static String paths[];
     private static int counters = 0;
+    //--------------------------------------
+    BufferedWriter bufferOut;
+    FileWriter writerOut;
+    String oFile;
     private int lineNumber;
     private ArrayList<Object[]> numbersList;
     private ArrayList<Integer> tempNumbersList;
     private ArrayList<int[]> matrixHelper = new ArrayList<int[]>();
     private String add;
     private String vertex;
-
-    //--------------------------------------
-    private BufferedWriter bufferOut;
-    private FileWriter writerOut;
-    private String oFile;
 
     /**
      * Robin Ehrlich
@@ -72,8 +71,9 @@ public class FileChooser<T> {
 
     public void processFile(String iFile, String oFile) {
         this.oFile = oFile;
-        BufferedReader inBuffer;
+        BufferedReader inBuffer = null;
         String inText;
+
         FileReader iReader;
 
 
@@ -136,6 +136,9 @@ public class FileChooser<T> {
                 intMatrix[i] = row;
             }
             //Print Lines from io File
+            writerOut.write("Number of vertices = " + counter);
+            bufferOut.newLine();
+            bufferOut.newLine();
             System.out.println("Number of vertices = " + counter);
             System.out.println("\n\nHere it is array:   " + Arrays.deepToString(intMatrix));
 
@@ -144,6 +147,21 @@ public class FileChooser<T> {
         } catch (Exception e) {
             System.err.println("Reading failed at line " + lineNumber);
             e.printStackTrace(System.err);
+        } finally {
+
+            try {
+
+                if (inBuffer != null)
+                    inBuffer.close();
+
+                if (writerOut != null)
+                    writerOut.close();
+
+            } catch (IOException ex) {
+
+                ex.printStackTrace();
+
+            }
         }
     }
 

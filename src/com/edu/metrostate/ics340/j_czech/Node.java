@@ -27,6 +27,7 @@ public class Node {
         return predecessor;
     }
 
+
     public void setPredecessor(Node predecessor) {
         this.predecessor = predecessor;
     }
@@ -77,7 +78,7 @@ public class Node {
     }
 
 
-    public Node dfsUtilNewNew() {
+    public Node dfsUtil() {
         Node compare = null;// node compare
         int weightValue = Integer.MAX_VALUE;// int weightValue
 
@@ -106,4 +107,20 @@ public class Node {
 
         return compare;
     }
+
+    public void printEdgeClassification() {
+
+        for (Edge edge : nodeEdge) {
+            if (edge.getEdgeClassification() != null) {
+
+
+                edge.setEdgeClassification("F");
+                System.out.println("Edge Class: " + edge.getOrigin().getName() + " " + edge.getDestination().getName()
+                        + " " + edge.getEdgeClassification());
+            }
+        }
+
+
+    }
+
 }

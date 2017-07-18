@@ -10,6 +10,7 @@ public class Edge {
     private Node origin;
     private Node destination;
     private String classification;
+    private int weightValue = 9999999;
 
     private int weight;
 
@@ -85,11 +86,8 @@ public class Edge {
 
     @Override
     public String toString() {
-        return "Edge{" +
-                "origin=" + origin +
-                ", destination=" + destination +
-                ", classification='" + classification + '\'' +
-                ", weight=" + weight +
-                '}';
+        return "Edge{" + "origin = " + origin +
+                ", destination = " + destination +
+                ", classification='" + classification + '\'' + '}';
     }
 }
