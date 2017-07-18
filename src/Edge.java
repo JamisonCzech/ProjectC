@@ -1,21 +1,18 @@
-package com.edu.metrostate.ics340.j_czech;
-
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Edge {
 
     List<Edge> allEdges = new ArrayList();
-    private Node origin;
-    private Node destination;
+    private Nodes origin;
+    private Nodes destination;
     private String classification;
     private int weightValue = 9999999;
 
     private int weight;
 
 
-    public Edge(Node origin, Node finish) {
+    public Edge(Nodes origin, Nodes finish) {
         this.origin = origin;
         this.destination = finish;
         this.classification = "";
@@ -25,28 +22,28 @@ public class Edge {
     /**
      * @return
      */
-    public Node getOrigin() {
+    public Nodes getOrigin() {
         return origin;
     }
 
     /**
      * @param origin
      */
-    public void setOrigin(Node origin) {
+    public void setOrigin(Nodes origin) {
         this.origin = origin;
     }
 
     /**
      * @return
      */
-    public Node getDestination() {
+    public Nodes getDestination() {
         return destination;
     }
 
     /**
      * @param destination
      */
-    public void setDestination(Node destination) {
+    public void setDestination(Nodes destination) {
         this.destination = destination;
     }
 

@@ -1,5 +1,3 @@
-package com.edu.metrostate.ics340.j_czech;
-
 import java.io.IOException;
 
 /**
@@ -68,13 +66,16 @@ public class Main {
                 oFile = iFile.substring(0, i) + "_out" + iFile.substring(i);
             else
                 oFile = iFile + "_out";
+
+
             fileChooser.processFile(iFile, oFile);
-            DepthFirstSearch depthFirstSearch = new DepthFirstSearch(iFile, oFile);
-            depthFirstSearch.createGraph(oFile);
-            depthFirstSearch.dfsSearch();
+            DepthFirstSearch depthFirstSearch = new DepthFirstSearch();
+            depthFirstSearch.createGraph();
+            depthFirstSearch.dfsSearch(iFile, oFile);
             depthFirstSearch.printVertices();
             depthFirstSearch.printEdgeClassification();
             depthFirstSearch.printSort();
+            depthFirstSearch.printStronglyConnected();
 
         }
 

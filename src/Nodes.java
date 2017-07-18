@@ -1,5 +1,3 @@
-package com.edu.metrostate.ics340.j_czech;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -12,31 +10,31 @@ import java.util.List;
  ***************************************************************************************/
 
 
-public class Node implements Comparator<Node> {
+public class Nodes implements Comparator<Nodes> {
 
     protected List<Edge> nodeEdge = new ArrayList<>();
     private String name;
-    private List<Node> neighborList;
+    private List<Nodes> neighborList;
     private boolean visited;
-    private Node predecessor;
+    private Nodes predecessor;
     private int startingRank;
     private int finishingRank;
 
-    public Node(String name) {
+    public Nodes(String name) {
         this.name = name;
         this.neighborList = new ArrayList<>();
     }
 
-    public void addNeighbor(Node node) {
-        this.neighborList.add(node);
+    public void addNeighbor(Nodes nodes) {
+        this.neighborList.add(nodes);
     }
 
-    public Node getPredecessor() {
+    public Nodes getPredecessor() {
         return predecessor;
     }
 
 
-    public void setPredecessor(Node predecessor) {
+    public void setPredecessor(Nodes predecessor) {
         this.predecessor = predecessor;
     }
 
@@ -76,13 +74,13 @@ public class Node implements Comparator<Node> {
     }
 
 
-    public List<Node> getNeighborList() {
+    public List<Nodes> getNeighborList() {
         return neighborList;
     }
 
-    public Node dfsUtil() {
+    public Nodes dfsUtil() {
         int weightValue = 9999999;
-        Node compare = null;
+        Nodes compare = null;
         for (Edge edge : nodeEdge) {
 
             if (!edge.getDestination().isMarked()) {
@@ -109,6 +107,8 @@ public class Node implements Comparator<Node> {
     public void printEdgeClassification() {
 
         for (Edge edge : nodeEdge) {
+
+
             if (edge.getEdgeClassification() != null) {
 
 
@@ -127,7 +127,12 @@ public class Node implements Comparator<Node> {
     }
 
     @Override
-    public int compare(Node o1, Node o2) {
+    public int compare(Nodes o1, Nodes o2) {
+
+        for (Edge edge : nodeEdge) {
+
+        }
+
         return 0;
     }
 }

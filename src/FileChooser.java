@@ -1,6 +1,3 @@
-package com.edu.metrostate.ics340.j_czech;
-
-
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.*;
@@ -14,19 +11,17 @@ public class FileChooser<T> {
     protected static ArrayList<String> vertices;
     protected static int counter;
     protected static int[][] intMatrix;
-    static ArrayList<Node> nodeList = new ArrayList<Node>();
+    static ArrayList<Nodes> nodesList = new ArrayList<Nodes>();
 
     static String all;
+    static FileWriter writerOut;
     private static int[] results;
     private static String[] slice;
     BufferedWriter bufferOut;
-    FileWriter writerOut;
-    String oFile;
     private int lineNumber;
     private ArrayList<Object[]> numbersList;
     private ArrayList<Integer> tempNumbersList;
     private ArrayList<int[]> matrixHelper = new ArrayList<int[]>();
-    private String add;
     private String vertex;
 
     /**
@@ -64,10 +59,8 @@ public class FileChooser<T> {
     }
 
     public void processFile(String iFile, String oFile) {
-        this.oFile = oFile;
-        BufferedReader inBuffer = null;
+        BufferedReader inBuffer;
         String inText;
-
         FileReader iReader;
 
 
@@ -81,8 +74,9 @@ public class FileChooser<T> {
             inBuffer = new BufferedReader(iReader);
 
             //Write file io out to file
-            writerOut = new FileWriter(oFile);
+            writerOut = new FileWriter(oFile, true);
             bufferOut = new BufferedWriter(writerOut);
+
 
             counter = 0;
             lineNumber = 0;
@@ -98,7 +92,7 @@ public class FileChooser<T> {
                     vertex = inText.substring(0, 1);
                     all = vertex;
                     vertices.add(vertex);
-                    nodeList.add(new Node(vertex));
+                    nodesList.add(new Nodes(vertex));
                     inText = inText.substring(1);
 
 
@@ -131,11 +125,11 @@ public class FileChooser<T> {
 
             try {
 
-                if (inBuffer != null)
-                    inBuffer.close();
-
                 if (writerOut != null)
                     writerOut.close();
+
+                if (bufferOut != null)
+                    bufferOut.close();
 
             } catch (IOException ex) {
 
@@ -144,6 +138,4 @@ public class FileChooser<T> {
             }
         }
     }
-
-
 }

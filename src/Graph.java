@@ -1,5 +1,3 @@
-package com.edu.metrostate.ics340.j_czech;
-
 /**
  * @author Jamison Czech <A HREF="mailto:main@jamisonczech@gmail.com">
  * (jamisonczech@gmail.com) </A>
